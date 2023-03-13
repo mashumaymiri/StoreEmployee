@@ -130,5 +130,58 @@ public class WebController {
 		model.addAttribute("stores", storeRepository.findAll());
 		return "cuemployee";
 	}
+	
+	@GetMapping("/demployee")
+	public String demployee(Model model) {
+		model.addAttribute("employee", new Employee());
+		model.addAttribute("employees", employeeRepository.findAll());
+		return "demployee";
+	}
 
+	@PostMapping("/demployee/deleteEmployee")
+	public String demployeeDelete(@ModelAttribute Employee employee, Model model) {
+		RestTemplate restTemplate = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+
+		MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+
+		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+		restTemplate.delete(
+		"http://localhost:8080/storeapplication/employees/"+employee.getId(), request , String.class);
+
+		model.addAttribute("employee", new Employee());
+		model.addAttribute("employees", employeeRepository.findAll());
+		return "demployee";
+	}
+	
+	@GetMapping("/dstore")
+	public String dstore(Model model) {
+		model.addAttribute("store", new Store());
+		model.addAttribute("stores", storeRepository.findAll());
+		return "dstore";
+	}
+
+	@PostMapping("/dstore/deleteStore")
+	public String dstoreDelete(@ModelAttribute Employee store, Model model) {
+		RestTemplate restTemplate = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+
+		MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+
+		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+		restTemplate.delete(
+		"http://localhost:8080/storeapplication/stores/"+store.getId(), request , String.class);
+
+		model.addAttribute("store", new Store());
+		model.addAttribute("stores", storeRepository.findAll());
+		return "dstore";
+	}
+
+	@GetMapping("/dashboard")
+	public String dstore(Model model) {
+		
+		model.addAttribute("store", new Store());
+		model.addAttribute("stores", storeRepository.findAll());
+		return "dashboard";
+	}
 }

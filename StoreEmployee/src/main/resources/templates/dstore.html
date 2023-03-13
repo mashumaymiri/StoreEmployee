@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Create and update store</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .header {
+            text-align: center;
+            background: purple;
+            color: #fff;
+            padding: 12px;
+        }
+
+        a {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"> 
+        <a style="font-size: larger; font-weight: bold;">StoreEmployee web application</a>
+        <br>
+        <a href="/">Home</a>
+    </div>
+    <!--  -->
+    <h2>Delete a store</h2>
+    <form th:action="@{/dstore/deleteStore}" th:object="${store}" method="post">
+        <label for="id">ID: </label>
+        <br>
+        <select name="id" th:field="*{id}">
+            <option th:each="store: ${stores}" th:value="${store.id}" th:text="${store.id}"></option>
+        </select>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</body>
+</html>
