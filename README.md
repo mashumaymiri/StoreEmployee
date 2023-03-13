@@ -10,3 +10,4 @@ JAVA (Spring Boot framework)
 
 - Installing and building (https://spring.io/quickstart)
 - Accessing Database (https://spring.io/guides/gs/accessing-data-mysql/)
+- Creating web pages (https://spring.io/guides/gs/serving-web-content/)

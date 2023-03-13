@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Create and update store</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .header {
+            text-align: center;
+            background: purple;
+            color: #fff;
+            padding: 12px;
+        }
+
+        a {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"> 
+        <a style="font-size: larger; font-weight: bold;">StoreEmployee web application</a>
+        <br>
+        <a href="/">Home</a>
+    </div>
+    <!--  -->
+    <h2>Create a store</h2>
+    <form action="/custore" th:action="@{/custore/createStore}" th:object="${store}" method="post">
+        <label for="name">Name: </label>
+        <br>
+        <input name="name" type="text" th:field="*{name}"/>
+        <br>
+        <label for="address">Address: </label>
+        <br>
+        <input name="address" type="text" th:field="*{address}"/>
+        <br>
+        <label for="store_type">Store type: </label>
+        <br>
+        <input name="store_type" type="text" th:field="*{store_type}"/>
+        <br>
+        <label for="status">Status: </label>
+        <br>
+        <select name="status" th:field="*{status}">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <h2>Update a store</h2>
+    <form action="/custore" th:action="@{/custore/updateStore}" th:object="${store}" method="post">
+        <label for="id">ID: </label>
+        <br>
+        <select name="id" th:field="*{id}">
+            <option th:each="store: ${stores}" th:value="${store.id}" th:text="${store.id}"></option>
+        </select>
+        <br>
+        <label for="name">Name: </label>
+        <br>
+        <input name="name" type="text" th:field="*{name}"/>
+        <br>
+        <label for="address">Address: </label>
+        <br>
+        <input name="address" type="text" th:field="*{address}"/>
+        <br>
+        <label for="store_type">Store type: </label>
+        <br>
+        <input name="store_type" type="text" th:field="*{store_type}"/>
+        <br>
+        <label for="status">Status: </label>
+        <br>
+        <select name="status" th:field="*{status}">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

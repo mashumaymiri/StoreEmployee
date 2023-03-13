@@ -83,7 +83,7 @@ public class MainController {
       throw new ResponseStatusException(
           HttpStatus.BAD_REQUEST, "Invalid value for status. valid values are: Active or Inactive");
     }
-    store.setCreated_date(LocalDate.now());
+    //store.setCreated_date(LocalDate.now());
 
     storeRepository.save(store);
 
@@ -181,7 +181,7 @@ public class MainController {
       throw new ResponseStatusException(
           HttpStatus.BAD_REQUEST, "Invalid value for status. valid values are: Active or Inactive");
     }
-    employee.setCreated_date(LocalDate.now());
+    //employee.setCreated_date(LocalDate.now());
 
     employeeRepository.save(employee);
 
