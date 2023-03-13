@@ -33,9 +33,9 @@
         <br>
         <input name="age" type="number" th:field="*{age}"/>
         <br>
-        <label for="store_id">Store id: </label>
+        <label for="storeid">Store id: </label>
         <br>
-        <select name="store_id" th:field="*{store_id}">
+        <select name="storeid" th:field="*{storeid}">
             <option th:each="store: ${stores}" th:value="${store.id}" th:text="${store.id}"></option>
         </select>
         <br>
@@ -70,9 +70,9 @@
         <br>
         <input name="age" type="number" th:field="*{age}"/>
         <br>
-        <label for="store_id">Store id: </label>
+        <label for="storeid">Store id: </label>
         <br>
-        <select name="store_id" th:field="*{store_id}">
+        <select name="storeid" th:field="*{storeid}">
             <option th:each="store: ${stores}" th:value="${store.id}" th:text="${store.id}"></option>
         </select>
         <br>

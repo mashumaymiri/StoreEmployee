@@ -126,16 +126,16 @@ public class MainController {
   // Create endpoint
   @PostMapping(path = "/employees")
   public @ResponseBody Integer createEmployee(@RequestParam String name, @RequestParam Integer age,
-      @RequestParam Integer store_id, @RequestParam String skill, @RequestParam String status) {
+      @RequestParam Integer storeid, @RequestParam String skill, @RequestParam String status) {
     Employee newEmployee = new Employee();
     newEmployee.setName(name);
     newEmployee.setAge(age);
 
-    if (storeRepository.existsById(store_id))
-      newEmployee.setStore_id(store_id);
+    if (storeRepository.existsById(storeid))
+      newEmployee.setStoreid(storeid);
     else
       throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST, "Invalid value for store_id. Store does not exist");
+          HttpStatus.BAD_REQUEST, "Invalid value for storeid. Store does not exist");
 
     if (!newEmployee.setSkill(skill)) {
       throw new ResponseStatusException(
@@ -156,7 +156,7 @@ public class MainController {
   // update endpoint
   @PutMapping(path = "/employees/{id}")
   public @ResponseBody Employee updateEmployee(@PathVariable Integer id, @RequestParam String name,
-      @RequestParam Integer age, @RequestParam Integer store_id, @RequestParam String skill,
+      @RequestParam Integer age, @RequestParam Integer storeid, @RequestParam String skill,
       @RequestParam String status) {
 
     if (!employeeRepository.existsById(id))
@@ -166,11 +166,11 @@ public class MainController {
     employee.setName(name);
     employee.setAge(age);
 
-    if (employeeRepository.existsById(store_id))
-      employee.setStore_id(store_id);
+    if (employeeRepository.existsById(storeid))
+      employee.setStoreid(storeid);
     else
       throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST, "Invalid value for store_id. Store does not exist");
+          HttpStatus.BAD_REQUEST, "Invalid value for storeid. Store does not exist");
 
     if (!employee.setSkill(skill)) {
       throw new ResponseStatusException(

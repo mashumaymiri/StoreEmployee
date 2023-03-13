@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Create and update store</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .header {
+            text-align: center;
+            background: purple;
+            color: #fff;
+            padding: 12px;
+        }
+
+        a {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"> 
+        <a style="font-size: larger; font-weight: bold;">StoreEmployee web application</a>
+        <br>
+        <a href="/">Home</a>
+    </div>
+    <!--  -->
+    <h2>Number of active stores</h2>
+    <p th:text="${activeStores}"></p>
+    <hr>
+    <h2>Number of active employees</h2>
+        <p th:text="${activeEmployees}"></p>
+    <hr>
+    <h2>Number of employees in each store</h2>
+    <lo>
+        <li>Store | Employees</li>
+        <li th:each="store: ${stores}" th:text="${store}"></li>
+    </lo>
+</body>
+</html>

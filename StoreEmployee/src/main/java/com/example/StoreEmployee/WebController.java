@@ -18,6 +18,8 @@ import org.springframework.http.MediaType;
 
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.LinkedMultiValueMap;
+import java.util.List;
+import java.util.ArrayList;
 
 
 @Controller
@@ -94,7 +96,7 @@ public class WebController {
 		MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
 		map.add("name", employee.getName());
 		map.add("age", Integer.toString(employee.getAge()));
-		map.add("store_id",Integer.toString(employee.getStore_id()));
+		map.add("storeid",Integer.toString(employee.getStoreid()));
 		map.add("skill", employee.getSkill());
 		map.add("status", employee.getStatus());
 
@@ -117,7 +119,7 @@ public class WebController {
 		MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
 		map.add("name", employee.getName());
 		map.add("age", Integer.toString(employee.getAge()));
-		map.add("store_id",Integer.toString(employee.getStore_id()));
+		map.add("storeid",Integer.toString(employee.getStoreid()));
 		map.add("skill", employee.getSkill());
 		map.add("status", employee.getStatus());
 
@@ -178,10 +180,17 @@ public class WebController {
 	}
 
 	@GetMapping("/dashboard")
-	public String dstore(Model model) {
+	public String dashboard(Model model) {
+		model.addAttribute("activeStores", storeRepository.findByStatus("Active").size());
+		model.addAttribute("activeEmployees", employeeRepository.findByStatus("Active").size());
+		MultiValueMap<String, Integer> empInEachStore= new LinkedMultiValueMap<>();
 		
-		model.addAttribute("store", new Store());
-		model.addAttribute("stores", storeRepository.findAll());
+		for (Store i:  storeRepository.findAll()) {
+			empInEachStore.add(Integer.toString(i.getId()),  employeeRepository.findByStoreid(i.getId()).size());
+		}
+		System.out.println(empInEachStore);
+
+		model.addAttribute("stores", empInEachStore);
 		return "dashboard";
 	}
 }

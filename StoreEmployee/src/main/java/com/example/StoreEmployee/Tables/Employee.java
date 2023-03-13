@@ -14,7 +14,7 @@ public class Employee {
     private Integer id;
     private String name;
     private Integer age;
-    private Integer store_id;
+    private Integer storeid;
     private String skill;
     private LocalDate created_date;
     private String status;
@@ -62,17 +62,17 @@ public class Employee {
     }
 
     /**
-     * @return the store_id
+     * @return the Storeid
      */
-    public Integer getStore_id() {
-        return store_id;
+    public Integer getStoreid() {
+        return storeid;
     }
 
     /**
-     * @param store_id the store_id to set
+     * @param storeid the storeid to set
      */
-    public void setStore_id(Integer store_id) {
-        this.store_id = store_id;
+    public void setStoreid(Integer storeid) {
+        this.storeid = storeid;
     }
 
     /**
