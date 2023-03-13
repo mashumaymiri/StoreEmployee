@@ -1,10 +1,21 @@
 # StoreEmployee
+http://localhost:8080/ for homepage
 
-# StoreEmployee backend 
-Backend for the application.
+## Endpoints
+- GET - /stores
+- GET - /stores/{id}
+- POST - /stores
+- PUT - /stores/{id}
+- DELETE - /stores/{id}
+- GET - /employees
+- GET - /employees/{id}
+- POST - /employees
+- PUT - /employees/{id}
+- DELETE - /employees/{id}
 
 ## Languages
-JAVA (Spring Boot framework)
+- JAVA (Spring Boot framework)
+- HTML for web pages 
 
 ## Resources
 
