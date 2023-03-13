@@ -5,12 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.io.Console;
 import java.time.LocalDate;
 
 @Entity
 public class Store {
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
   private String name;
   private String address;
@@ -54,8 +55,13 @@ public class Store {
     return status;
   }
 
-  public void setStatus(String status) {
-    this.status = status;
+  public Boolean setStatus(String status) {
+    if (status.equals("Active") || status.equals("Inactive")) {
+      this.status = status;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public LocalDate getCreated_date() {
