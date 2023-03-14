@@ -33,6 +33,9 @@ http://localhost:8080/ for homepage
 - spring-boot-starter-web
 - spring-boot-starter-thymeleaf
 
+## How to run 
+run (gradlew.bat bootRun) in cmd
+
 ## Resources
 - Installing and building (https://spring.io/quickstart)
 - Accessing Database (https://spring.io/guides/gs/accessing-data-mysql/)
